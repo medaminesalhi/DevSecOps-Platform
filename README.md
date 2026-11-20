@@ -1,6 +1,6 @@
 <div align="center">
 
-# ☸️ Cloud-Native DevOps & DevSecOps Lab
+# Cloud-Native DevOps & DevSecOps Lab
 
 ### Kubernetes Infrastructure • CI/CD Automation • Security • Observability
 
