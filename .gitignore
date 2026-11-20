@@ -37,3 +37,25 @@ __pycache__/
 # Env
 .env
 .env.*
+
+# Local and generated files
+.ansible/
+.config/helm/
+.git_backup_before_repair/
+.local/
+.sigstore/
+.viminfo
+.git-credentials
+
+# Dependencies
+**/node_modules/
+
+# Environment secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# Temporary files
+*.log
+*.retry
+*.swp
