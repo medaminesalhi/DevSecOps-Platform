@@ -29,7 +29,7 @@
 
 ---
 
-## 📌 Overview
+## Overview
 
 This repository demonstrates a **self-hosted DevOps platform**, from infrastructure provisioning and application delivery to security controls and operational monitoring. The environment is organized around a **one-control-plane, two-worker Kubernetes cluster**, supported by a separate **tools/automation host**.
 
@@ -41,7 +41,7 @@ The demo workload is a **student management application**:
 
 > **Project status:** Educational lab / work in progress. This README documents components and configuration found in the repository; it does not imply that the entire stack has passed an end-to-end deployment test. See [Current limitations](#-current-limitations--next-steps) before running `site.yml`.
 
-## 🧭 Contents
+## Contents
 
 - [Objectives](#-objectives)
 - [Technology stack](#-technology-stack)
@@ -55,7 +55,7 @@ The demo workload is a **student management application**:
 - [Security practices](#-security-practices)
 - [Current limitations & next steps](#-current-limitations--next-steps)
 
-## 🎯 Objectives
+## Objectives
 
 1. Automate Linux and Kubernetes setup using **Ansible roles and playbooks**.
 2. Build and run a **multi-node Kubernetes cluster** with `kubeadm` and Flannel networking.
@@ -65,7 +65,7 @@ The demo workload is a **student management application**:
 6. Observe cluster workloads through **metrics, dashboards and centralized logs**.
 7. Practice reusable configuration, deployment verification and infrastructure troubleshooting.
 
-## 🧰 Technology stack
+## Technology stack
 
 | Layer | Technologies | Purpose |
 |:--|:--|:--|
@@ -97,7 +97,7 @@ The demo workload is a **student management application**:
 <img src="https://img.shields.io/badge/Kyverno-326CE5?style=for-the-badge" alt="Kyverno" />
 </p>
 
-## 🖥️ Infrastructure topology
+## Infrastructure topology
 
 The Ansible inventory defines the following lab machines:
 
@@ -110,7 +110,7 @@ The Ansible inventory defines the following lab machines:
 
 > In `ansible/inventory/inventory.ini`, **`tools` is represented by `localhost ansible_connection=local`**. Run the Ansible commands on that control host. The inventory uses the SSH user `vagrant` and a machine-specific SSH private key path.
 
-## 🏗️ Architecture
+## Architecture
 
 ### 1. Infrastructure and application delivery
 
@@ -175,7 +175,7 @@ MySQL Service (:3306)
 
 The frontend configuration proxies `/api/` requests to `backend.project.svc.cluster.local:5000`. The backend accesses MySQL through environment-driven database settings.
 
-## 🔁 CI/CD workflow
+## CI/CD workflow
 
 ```mermaid
 flowchart LR
@@ -192,7 +192,7 @@ The repository contains **separate `backend/Jenkinsfile` and `frontend/Jenkinsfi
 
 **Security and automation extensions** included as Ansible roles: RBAC, Kubernetes audit logs, Kaniko, Cosign, Jenkins seed jobs and Kyverno integration (the Kyverno role itself is missing from this archive).
 
-## 📂 Repository structure
+##  Repository structure
 
 ```text
 .
@@ -254,7 +254,7 @@ The repository contains **separate `backend/Jenkinsfile` and `frontend/Jenkinsfi
 
 > The archive also contains generated and local directories (for example, `backend/node_modules/`, `.local/`, `.ansible/`, and a Git backup). These are **not** part of the recommended minimal source layout and should be reviewed before publication.
 
-## ✅ Prerequisites
+## Prerequisites
 
 - Linux-based automation host with **Ansible**, **SSH**, **Git** and Python available.
 - Four reachable hosts (one tools host, one Kubernetes master and two workers), following the inventory topology.
@@ -265,7 +265,7 @@ The repository contains **separate `backend/Jenkinsfile` and `frontend/Jenkinsfi
 
 The repository assumes a specific lab network (`10.10.0.0/24`), the `vagrant` account and preconfigured virtual machines. Adjust those values for another environment.
 
-## 🚀 Deployment guide
+## Deployment guide
 
 ### 1. Clone the repository
 
@@ -338,7 +338,7 @@ kubectl get svc -A
 
 Relevant services include Gitea, Nexus, Jenkins, SonarQube, Prometheus, Grafana and the application. Some run as Docker containers on the **tools** host; others run within Kubernetes.
 
-## 🧪 Validation and troubleshooting
+## Validation and troubleshooting
 
 | Check | Command | Expected outcome |
 |:--|:--|:--|
@@ -359,7 +359,7 @@ kubectl logs <pod-name> -n <namespace> --tail=100
 kubectl get events -A --sort-by=.metadata.creationTimestamp
 ```
 
-## 🔐 Security practices
+## Security practices
 
 This lab explores several DevSecOps controls:
 
@@ -380,7 +380,7 @@ This lab explores several DevSecOps controls:
 
 Never include secrets in screenshots, logs, commits or public issue reports.
 
-## 🛠️ Current limitations & next steps
+## Current limitations & next steps
 
 The source archive reveals several issues to address as the repository is improved:
 
